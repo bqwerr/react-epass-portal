@@ -7,6 +7,7 @@ import Status from "./components/Status";
 import Permission from "./components/Permission";
 import { Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from "./components/Login";
 
 function App() {
   const marginTop = { marginTop: "30px" };
@@ -20,6 +21,7 @@ function App() {
               <Route path="/" exact component={Welcome} />
               <Route path="/add" exact component={Permission} />
               <Route path="/status" exact component={Status} />
+              <Route path="/login" exact component={Login} />
             </Switch>
           </Col>
         </Row>

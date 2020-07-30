@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Jumbotron, Row, Col } from "react-bootstrap";
-import Instructions from "./Instructions";
+import { Jumbotron, Row, Col, Button } from "react-bootstrap";
+
 export default class Welcome extends Component {
+  onClick = () => this.props.history.push("/login");
   render() {
     return (
       <div>
@@ -13,13 +14,10 @@ export default class Welcome extends Component {
             framework provides services to 10 states of India to provide
             movement e-Pass during COVID-19 pandemic.
           </p>
+          <Button variant="secondary" onClick={this.onClick}>
+            Login
+          </Button>
         </Jumbotron>
-
-        {/* <Row>
-          <Col md={"6"}>
-            <Instructions />
-          </Col>
-        </Row> */}
       </div>
     );
   }
