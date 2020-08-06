@@ -3,6 +3,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function NavigationBar() {
+  const uid = localStorage.getItem("uid");
   return (
     <Navbar bg="dark" variant="dark">
       <Link to={""} className="navbar-brand">
@@ -17,15 +18,16 @@ export default function NavigationBar() {
         <Link to={""} className="nav-link">
           Home
         </Link>
-        <Link to={"add"} className="nav-link">
-          Permission
-        </Link>
-        <Link to={"status"} className="nav-link">
-          Check Status
-        </Link>
-        <Link to={"api"} className="nav-link">
-          Api
-        </Link>
+        {uid === null ? (
+          <Link to={"add"} className="nav-link">
+            Apply
+          </Link>
+        ) : null}
+        {uid != null ? (
+          <Link to={"dashboard"} className="nav-link">
+            Dashboard
+          </Link>
+        ) : null}
       </Nav>
     </Navbar>
   );

@@ -1,84 +1,122 @@
 import React, { Component } from "react";
-import { useFormik } from "formik";
-import { Card, Form, Button } from "react-bootstrap";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Card, Button } from "react-bootstrap";
 import * as Yup from "yup";
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignInAlt, faUndo } from "@fortawesome/free-solid-svg-icons";
 
-const initialValues = {
-  uid: "",
-  password: "",
-};
+class Login extends Component {
+  initialValues = {
+    uid: "",
+    password: "",
+  };
 
-const onSubmit = (values) => {
-  console.log("Form data", values);
-};
+  onSubmit = (values, onSubmitProps) => {
+    const vals = {
+      uid: values.uid,
+      password: values.password,
+    };
+    //console.log(onSubmitProps)
 
-const validationSchema = Yup.object({
-  uid: Yup.string().required("Valid UID is Required"),
-  password: Yup.string().required("Password is Required"),
-});
+    axios
+      .post("http://localhost:8080/api/auth/login", vals)
+      .then((response) => {
+        if (response.data != null) {
+          const authToken = response.data.authenticationToken;
+          localStorage.setItem("authToken", authToken);
+          localStorage.setItem("refreshToken", response.data.refreshToken);
+          localStorage.setItem("uid", response.data.uid);
+          localStorage.setItem("expiresAt", response.data.expiresAt);
+          onSubmitProps.setSubmitting(false);
+          onSubmitProps.resetForm();
+          this.props.history.replace("/dashboard");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        onSubmitProps.setSubmitting(false);
+        onSubmitProps.resetForm();
+      });
+  };
 
-function Login() {
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema,
+  validationSchema = Yup.object({
+    uid: Yup.string().required("UID is Required"),
+    password: Yup.string().required("No Password provided."),
   });
 
-  console.log("formik.touched", formik.touched);
-
-  return (
-    <Card
-      className={"border border-dark bg-dark text-white mx-auto"}
-      style={{ width: "30rem" }}
-    >
-      <Card.Header className={"text-center"}>
-        <h3>Login To Admin Console</h3>
-      </Card.Header>
-
-      <Form onSubmit={formik.handleSubmit}>
-        <Card.Body>
-          <div className="row">
-            <div className={"col"}>
-              <Form.Label>UID</Form.Label>
-              <Form.Control
-                type="text"
-                id="uid"
-                name="uid"
-                className={"bg-dark text-white"}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.uid}
-              />
-              {formik.touched.uid && formik.errors.uid ? (
-                <div className="error">{formik.errors.uid}</div>
-              ) : null}
-            </div>
-          </div>
-          <br></br>
-          <div className="row">
-            <div className={"col"}>
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                id="password"
-                name="password"
-                className={"bg-dark text-white"}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.password}
-              />
-              {formik.touched.password && formik.errors.password ? (
-                <div className="error">{formik.errors.password}</div>
-              ) : null}
-            </div>
-          </div>
-        </Card.Body>
-        <Card.Footer>
-          <Button variant="success">Login</Button>
-        </Card.Footer>
-      </Form>
-    </Card>
-  );
+  render() {
+    return (
+      <Card
+        className={"border border-dark bg-dark text-white mx-auto"}
+        style={{ width: "58%" }}
+      >
+        <Card.Header className={"text-center"}>
+          <h3>Login To Admin Console</h3>
+        </Card.Header>
+        <Formik
+          initialValues={this.initialValues}
+          validationSchema={this.validationSchema}
+          onSubmit={this.onSubmit}
+        >
+          {(formik) => {
+            //console.log("Formik props", formik);
+            return (
+              <Form>
+                <Card.Body>
+                  <div className="row">
+                    <div className="col-12">
+                      <label htmlFor="uid">UID</label>
+                      <Field
+                        type="text"
+                        id="uid"
+                        name="uid"
+                        className={"bg-dark text-white form-control"}
+                      />
+                      <div className="error">
+                        <ErrorMessage name="uid" />
+                      </div>
+                    </div>
+                  </div>
+                  <br></br>
+                  <div className="row">
+                    <div className="col-12">
+                      <label htmlFor="password">Password</label>
+                      <Field
+                        type="password"
+                        id="password"
+                        name="password"
+                        autoComplete="on"
+                        className={"bg-dark text-white form-control"}
+                      />
+                      <div className="error">
+                        <ErrorMessage name="password" />
+                      </div>
+                    </div>
+                  </div>
+                </Card.Body>
+                <Card.Footer>
+                  <Button
+                    variant="success"
+                    type="submit"
+                    disabled={!formik.isValid || formik.isSubmitting}
+                  >
+                    Login&nbsp;
+                    <FontAwesomeIcon icon={faSignInAlt} />
+                  </Button>
+                  &nbsp;&nbsp;&nbsp;
+                  <Button variant="danger" type="reset">
+                    Reset&nbsp;
+                    <FontAwesomeIcon icon={faUndo} />
+                  </Button>
+                </Card.Footer>
+              </Form>
+            );
+          }}
+        </Formik>
+      </Card>
+    );
+  }
 }
 
 export default Login;

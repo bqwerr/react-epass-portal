@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import { Jumbotron, Row, Col, Button } from "react-bootstrap";
+import { Jumbotron, Button } from "react-bootstrap";
 
 export default class Welcome extends Component {
+  constructor(props) {
+    super(props);
+  }
   onClick = () => this.props.history.push("/login");
+  handleLogout = () => {};
   render() {
+    const uid = localStorage.getItem("uid");
     return (
       <div>
         <Jumbotron className="bg-dark text-white">
@@ -14,9 +19,20 @@ export default class Welcome extends Component {
             framework provides services to 10 states of India to provide
             movement e-Pass during COVID-19 pandemic.
           </p>
-          <Button variant="secondary" onClick={this.onClick}>
-            Login
-          </Button>
+          <div>
+            {uid === null ? (
+              <Button variant="secondary" onClick={this.onClick}>
+                Login
+              </Button>
+            ) : (
+              <div>
+                <p className="text-success">Logged In as Admin {uid}</p>
+                <Button variant="danger" onClick={this.handleLogout}>
+                  Log out
+                </Button>
+              </div>
+            )}
+          </div>
         </Jumbotron>
       </div>
     );
