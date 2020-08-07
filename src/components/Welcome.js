@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Jumbotron, Button } from "react-bootstrap";
+import Posts from "./Posts";
 
 export default class Welcome extends Component {
   onClick = () => this.props.history.push("/login");
@@ -35,6 +36,7 @@ export default class Welcome extends Component {
             )}
           </div>
         </Jumbotron>
+        <Posts user={user} />
       </div>
     );
   }

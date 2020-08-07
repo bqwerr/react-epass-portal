@@ -54,7 +54,15 @@ class App extends Component {
                     <Welcome {...props} user={this.state.user} />
                   )}
                 />
-                <Route path="/dashboard" exact component={Dashboard} />
+                <Route
+                  path="/dashboard"
+                  exact
+                  render={(props) => {
+                    if (!this.state.user) return <Redirect to="/" />;
+                    return <Dashboard {...props} />;
+                  }}
+                />
+
                 <Route path="/add" exact component={Permission} />
                 <Route
                   path="/login"
@@ -64,7 +72,15 @@ class App extends Component {
                     return <Login {...props} />;
                   }}
                 />
-                <Route path="/dashboard/:id" component={Details} />
+                <Route
+                  path="/dashboard/:id"
+                  exact
+                  render={(props) => {
+                    if (!this.state.user) return <Redirect to="/" />;
+                    return <Details {...props} />;
+                  }}
+                />
+
                 <Redirect to="/" />
               </Switch>
             </Col>
