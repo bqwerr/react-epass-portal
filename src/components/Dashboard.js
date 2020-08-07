@@ -6,6 +6,7 @@ import PermissionsTable from "./PermissionsTable";
 import { paginate } from "../services/PaginateService";
 import _ from "lodash";
 import axios from "axios";
+import SearchBox from "./SearchBox";
 
 export default class Dashboard extends Component {
   state = {
@@ -13,6 +14,7 @@ export default class Dashboard extends Component {
     types: [],
     currentPage: 1,
     pageSize: 3,
+    searchQuery: "",
     sortColumn: { path: "travellers", order: "desc" },
   };
 
@@ -45,7 +47,7 @@ export default class Dashboard extends Component {
   }
 
   handleTypeSelect = (type) => {
-    this.setState({ selectedType: type, currentPage: 1 });
+    this.setState({ selectedType: type, searchQuery: "", currentPage: 1 });
   };
 
   handlePageChange = (page) => {
@@ -63,19 +65,27 @@ export default class Dashboard extends Component {
     this.setState({ sortColumn });
   };
 
+  handleSearch = (query) => {
+    this.setState({ searchQuery: query, selectedType: null, currentPage: 1 });
+  };
+
   getPagedData = () => {
     const {
       pageSize,
       currentPage,
       sortColumn,
       selectedType,
+      searchQuery,
       permissions: allPermissions,
     } = this.state;
 
-    const filtered =
-      selectedType && selectedType._id
-        ? allPermissions.filter((p) => p.reason === selectedType.name)
-        : allPermissions;
+    let filtered = allPermissions;
+    if (searchQuery)
+      filtered = allPermissions.filter((p) =>
+        p.fullname.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    else if (selectedType && selectedType._id)
+      filtered = allPermissions.filter((p) => p.reason === selectedType.name);
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
@@ -86,7 +96,7 @@ export default class Dashboard extends Component {
 
   render() {
     const { length: count } = this.state.permissions;
-    const { pageSize, currentPage, sortColumn } = this.state;
+    const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
 
     const { totalCount, data: permissions } = this.getPagedData();
 
@@ -108,6 +118,7 @@ export default class Dashboard extends Component {
           <p className={"text-white"}>
             Showing all {totalCount} Permissions in the Database.
           </p>
+          <SearchBox value={searchQuery} onChange={this.handleSearch} />
           <PermissionsTable
             permissions={permissions}
             sortColumn={sortColumn}
