@@ -102,10 +102,8 @@ export default class Dashboard extends Component {
 
     const { totalCount, data: permissions } = this.getPagedData();
 
-    if (count === 150)
-      return (
-        <p className="text-white">There are no Permissions Registered yet.</p>
-      );
+    if (count === 0)
+      return <p className="text-white">Loading Permissions from database...</p>;
 
     return (
       <div className="row">

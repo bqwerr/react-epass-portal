@@ -8,7 +8,7 @@ export default class Footer extends Component {
       <Navbar fixed="bottom" bg="dark" variant="dark">
         <Container>
           <Col lg={12} className="text-center text-muted">
-            <div>{fullYear}, No Rights Reserved</div>
+            <div>{fullYear}, All Rights Reserved</div>
           </Col>
         </Container>
       </Navbar>
