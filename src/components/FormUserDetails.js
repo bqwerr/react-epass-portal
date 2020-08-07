@@ -16,7 +16,9 @@ export default class FormUserDetails extends Component {
             <h3>Permission Form</h3>
           </Card.Header>
           <Card.Body>
-            <Card.Title>Step {step} of 3 : General</Card.Title>
+            <Card.Title className="text-primary">
+              Step {step} of 3 : General
+            </Card.Title>
             <br />
             <div className={"row"}>
               <div className={"col-md-6"}>

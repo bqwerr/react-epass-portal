@@ -3,7 +3,7 @@ import FormUserDetails from "./FormUserDetails";
 import FormTravelDetails from "./FormTravelDetails";
 import Confirm from "./Confirm";
 import Joi from "joi-browser";
-import _ from "lodash";
+import axios from "axios";
 
 export class Permission extends Component {
   state = {
@@ -154,7 +154,57 @@ export class Permission extends Component {
     return 1;
   };
 
-  handleSubmit = () => {};
+  handleSubmit = () => {
+    var data = { ...this.state };
+    delete data.errors;
+    delete data.step;
+    data["src_address"] =
+      data.src_landmark +
+      " " +
+      data.src_area +
+      " " +
+      data.src_district +
+      " " +
+      data.src_state +
+      " " +
+      data.src_zip;
+    data["dest_address"] =
+      data.dest_landmark +
+      " " +
+      data.dest_area +
+      " " +
+      data.dest_district +
+      " " +
+      data.dest_state +
+      " " +
+      data.dest_zip;
+
+    delete data.src_landmark;
+    delete data.src_area;
+    delete data.src_district;
+    delete data.src_state;
+    delete data.src_zip;
+    delete data.dest_landmark;
+    delete data.dest_area;
+    delete data.dest_district;
+    delete data.dest_state;
+    delete data.dest_zip;
+    var config = {
+      method: "post",
+      url: "http://localhost:8080/form/submit/",
+      data: data,
+    };
+
+    axios(config)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   render() {
     const { step } = this.state;

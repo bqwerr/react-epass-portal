@@ -21,11 +21,13 @@ export default class Dashboard extends Component {
   componentDidMount() {
     if (localStorage.getItem("authToken") != null) {
       var data = "";
+      const authToken = localStorage.getItem("authToken");
+
       var config = {
         method: "get",
         url: "http://localhost:8080/api/permission/all",
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("authToken"),
+          Authorization: "Bearer " + authToken,
         },
         data: data,
       };
@@ -131,6 +133,8 @@ export default class Dashboard extends Component {
             currentPage={currentPage}
             onPageChange={this.handlePageChange}
           />
+          <br></br>
+          <br></br>
         </div>
       </div>
     );

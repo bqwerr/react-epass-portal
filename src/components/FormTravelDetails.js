@@ -21,7 +21,9 @@ export default class FormTravelDetails extends Component {
             <h3>Permission Form</h3>
           </Card.Header>
           <Card.Body>
-            <Card.Title>Step {step} of 3 : Travel Details</Card.Title>
+            <Card.Title className="text-primary">
+              Step {step} of 3 : Travel Details
+            </Card.Title>
             <br />
             <Card.Title className={"text-muted"}>
               <Card.Title>Present Address</Card.Title>

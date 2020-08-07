@@ -11,12 +11,11 @@ const MyPagination = ({ totalCount, pageSize, currentPage, onPageChange }) => {
     <Pagination size="sm">
       {pages.map((page) => (
         <Pagination.Item
+          onClick={() => onPageChange(page)}
           key={page}
           className={page === currentPage ? "active" : "bg-dark text-white"}
         >
-          <a className="page-link" onClick={() => onPageChange(page)}>
-            {page}
-          </a>
+          {page}
         </Pagination.Item>
       ))}
     </Pagination>

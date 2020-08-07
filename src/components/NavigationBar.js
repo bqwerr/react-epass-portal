@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 export default class NavigationBar extends Component {
   render() {
+    const { user } = this.props;
+
     return (
       <Navbar bg="dark" variant="dark">
         <Link to={""} className="navbar-brand">
@@ -18,7 +20,7 @@ export default class NavigationBar extends Component {
           <Link to={""} className="nav-link">
             Home
           </Link>
-          {localStorage === null ? (
+          {!user ? (
             <Link to={"add"} className="nav-link">
               Apply
             </Link>

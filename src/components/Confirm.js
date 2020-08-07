@@ -21,7 +21,6 @@ export default class Confirm extends Component {
         email,
         reason,
         travellers,
-        description,
         src_state,
         dest_state,
         src_district,
@@ -42,7 +41,9 @@ export default class Confirm extends Component {
             <h3>Permission Form</h3>
           </Card.Header>
           <Card.Body>
-            <Card.Title>Step {step} of 3 : Confirm Your Details</Card.Title>
+            <Card.Title className="text-primary">
+              Step {step} of 3 : Confirm Your Details
+            </Card.Title>
             <br></br>
             <div className={"row"}>
               <div className={"col-md-6"}>
@@ -110,7 +111,7 @@ export default class Confirm extends Component {
               Go Back
             </Button>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <Button variant="success" onClick={this.handleSubmit}>
+            <Button variant="success" onClick={this.props.handleSubmit}>
               Apply
             </Button>
           </Card.Footer>

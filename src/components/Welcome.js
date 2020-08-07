@@ -5,10 +5,11 @@ export default class Welcome extends Component {
   onClick = () => this.props.history.push("/login");
   handleLogout = () => {
     localStorage.clear();
-    this.props.history.replace("/");
+    window.location = "/";
   };
   render() {
-    const uid = localStorage.getItem("uid");
+    const { user } = this.props;
+
     return (
       <div>
         <Jumbotron className="bg-dark text-white">
@@ -20,13 +21,13 @@ export default class Welcome extends Component {
             movement e-Pass during COVID-19 pandemic.
           </p>
           <div>
-            {uid === null ? (
+            {!user ? (
               <Button variant="secondary" onClick={this.onClick}>
                 Login
               </Button>
             ) : (
               <div>
-                <p className="text-success">Logged In as Admin {uid}</p>
+                <p className="text-success">Logged In as Admin {user.uid}</p>
                 <Button variant="danger" onClick={this.handleLogout}>
                   Log out
                 </Button>

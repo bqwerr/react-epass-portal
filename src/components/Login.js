@@ -30,7 +30,7 @@ class Login extends Component {
           localStorage.setItem("expiresAt", response.data.expiresAt);
           onSubmitProps.setSubmitting(false);
           onSubmitProps.resetForm();
-          this.props.history.replace("/dashboard");
+          window.location = "/";
         }
       })
       .catch((error) => {
