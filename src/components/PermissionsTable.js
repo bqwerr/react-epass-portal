@@ -32,7 +32,7 @@ class PermissionsTable extends Component {
           onClick={() => this.props.onDelete(permission)}
           className="btn btn-danger btn-sm"
         >
-          Delete
+          Remove
         </button>
       ),
     },

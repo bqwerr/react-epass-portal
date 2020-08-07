@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Jumbotron, Button } from "react-bootstrap";
 
 export default class Welcome extends Component {
-  constructor(props) {
-    super(props);
-  }
   onClick = () => this.props.history.push("/login");
-  handleLogout = () => {};
+  handleLogout = () => {
+    localStorage.clear();
+    this.props.history.replace("/");
+  };
   render() {
     const uid = localStorage.getItem("uid");
     return (

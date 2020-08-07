@@ -13,7 +13,7 @@ export default class FormTravelDetails extends Component {
   };
 
   render() {
-    const { values, handleChange, step } = this.props;
+    const { values, handleChange, step, errors } = this.props;
     return (
       <div>
         <Card className={"border border-dark bg-dark text-white"}>
@@ -34,6 +34,11 @@ export default class FormTravelDetails extends Component {
                   onChange={handleChange("src_state")}
                   className={"bg-dark text-white"}
                 />
+                {errors["src_state"] && (
+                  <div className="text-danger">
+                    <strong>{errors["src_state"]}</strong>
+                  </div>
+                )}
               </div>
               <div className={"col-md-3"}>
                 <Form.Label>District</Form.Label>
@@ -42,6 +47,11 @@ export default class FormTravelDetails extends Component {
                   onChange={handleChange("src_district")}
                   className={"bg-dark text-white"}
                 />
+                {errors["src_district"] && (
+                  <div className="text-danger">
+                    <strong>{errors["src_district"]}</strong>
+                  </div>
+                )}
               </div>
               <div className={"col-md-3"}>
                 <Form.Label>Area</Form.Label>
@@ -50,6 +60,11 @@ export default class FormTravelDetails extends Component {
                   onChange={handleChange("src_area")}
                   className={"bg-dark text-white"}
                 />
+                {errors["src_area"] && (
+                  <div className="text-danger">
+                    <strong>{errors["src_area"]}</strong>
+                  </div>
+                )}
               </div>
               <div className={"col-md-3"}>
                 <Form.Label>Zip / Pincode</Form.Label>
@@ -58,6 +73,11 @@ export default class FormTravelDetails extends Component {
                   onChange={handleChange("src_zip")}
                   className={"bg-dark text-white"}
                 />
+                {errors["src_zip"] && (
+                  <div className="text-danger">
+                    <strong>{errors["src_zip"]}</strong>
+                  </div>
+                )}
               </div>
             </div>
             <br />
@@ -71,6 +91,11 @@ export default class FormTravelDetails extends Component {
                   onChange={handleChange("src_landmark")}
                   className={"bg-dark text-white"}
                 />
+                {errors["src_landmark"] && (
+                  <div className="text-danger">
+                    <strong>{errors["src_landmark"]}</strong>
+                  </div>
+                )}
               </div>
             </div>
             <br />
@@ -85,6 +110,11 @@ export default class FormTravelDetails extends Component {
                   onChange={handleChange("dest_state")}
                   className={"bg-dark text-white"}
                 />
+                {errors["dest_state"] && (
+                  <div className="text-danger">
+                    <strong>{errors["dest_state"]}</strong>
+                  </div>
+                )}
               </div>
               <div className={"col-md-3"}>
                 <Form.Label>District</Form.Label>
@@ -93,6 +123,11 @@ export default class FormTravelDetails extends Component {
                   onChange={handleChange("dest_district")}
                   className={"bg-dark text-white"}
                 />
+                {errors["dest_district"] && (
+                  <div className="text-danger">
+                    <strong>{errors["dest_district"]}</strong>
+                  </div>
+                )}
               </div>
               <div className={"col-md-3"}>
                 <Form.Label>Area</Form.Label>
@@ -101,6 +136,11 @@ export default class FormTravelDetails extends Component {
                   onChange={handleChange("dest_area")}
                   className={"bg-dark text-white"}
                 />
+                {errors["dest_area"] && (
+                  <div className="text-danger">
+                    <strong>{errors["dest_area"]}</strong>
+                  </div>
+                )}
               </div>
               <div className={"col-md-3"}>
                 <Form.Label>Zip / Pincode</Form.Label>
@@ -109,6 +149,11 @@ export default class FormTravelDetails extends Component {
                   onChange={handleChange("dest_zip")}
                   className={"bg-dark text-white"}
                 />
+                {errors["dest_zip"] && (
+                  <div className="text-danger">
+                    <strong>{errors["dest_zip"]}</strong>
+                  </div>
+                )}
               </div>
             </div>
             <br />
@@ -122,6 +167,11 @@ export default class FormTravelDetails extends Component {
                   onChange={handleChange("dest_landmark")}
                   className={"bg-dark text-white"}
                 />
+                {errors["dest_landmark"] && (
+                  <div className="text-danger">
+                    <strong>{errors["dest_landmark"]}</strong>
+                  </div>
+                )}
               </div>
             </div>
             <div className="row">
@@ -135,6 +185,11 @@ export default class FormTravelDetails extends Component {
                   className={"bg-dark text-white"}
                   placeholder="How Important this Travel to you ?"
                 />
+                {errors["description"] && (
+                  <div className="text-danger">
+                    <strong>{errors["description"]}</strong>
+                  </div>
+                )}
               </div>
             </div>
           </Card.Body>

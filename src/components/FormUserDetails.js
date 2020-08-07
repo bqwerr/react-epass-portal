@@ -7,7 +7,8 @@ export default class FormUserDetails extends Component {
     this.props.nextStep();
   };
   render() {
-    const { values, handleChange, step } = this.props;
+    const { values, handleChange, step, errors } = this.props;
+
     return (
       <div>
         <Card className={"border border-dark bg-dark text-white"}>
@@ -31,6 +32,11 @@ export default class FormUserDetails extends Component {
                   <Form.Text className="text-muted">
                     Full Name as printed on id proof
                   </Form.Text>
+                  {errors["fullname"] && (
+                    <div className="text-danger">
+                      <strong>{errors["fullname"]}</strong>
+                    </div>
+                  )}
                 </Form.Group>
               </div>
               <div className={"col-md-6"}>
@@ -43,6 +49,11 @@ export default class FormUserDetails extends Component {
                     defaultValue={values.document_ref}
                     placeholder="Enter valid Reference number"
                   />
+                  {errors["document_ref"] && (
+                    <div className="text-danger">
+                      <strong>{errors["document_ref"]}</strong>
+                    </div>
+                  )}
                 </Form.Group>
               </div>
             </div>
@@ -57,6 +68,11 @@ export default class FormUserDetails extends Component {
                     defaultValue={values.phone}
                     placeholder="Enter valid Mobile number"
                   />
+                  {errors["phone"] && (
+                    <div className="text-danger">
+                      <strong>{errors["phone"]}</strong>
+                    </div>
+                  )}
                 </Form.Group>
               </div>
               <div className={"col-md-6"}>
@@ -72,6 +88,11 @@ export default class FormUserDetails extends Component {
                   <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
                   </Form.Text>
+                  {errors["email"] && (
+                    <div className="text-danger">
+                      <strong>{errors["email"]}</strong>
+                    </div>
+                  )}
                 </Form.Group>
               </div>
             </div>
@@ -127,15 +148,17 @@ export default class FormUserDetails extends Component {
                 <Form.Label>Select Type of travel</Form.Label>
                 <Form.Control
                   as="select"
-                  defaultValue={values.reason}
-                  onChange={handleChange("reason")}
+                  defaultValue={values.permission_name}
+                  onChange={handleChange("permission_name")}
                   className={"bg-dark text-white"}
                 >
-                  <option value="Medical/Emergency">Medical/Emergency</option>
+                  <option value="Travel Within State">
+                    Travel Within State
+                  </option>
+                  <option value="Travel Outside State">
+                    Travel Outside State
+                  </option>
                   <option value="Goods Transport">Goods Transport</option>
-                  <option value="Marriage">Marriage</option>
-                  <option value="Education Purpose">Education Purpose</option>
-                  <option value="Touring">Touring</option>
                 </Form.Control>
               </div>
             </div>

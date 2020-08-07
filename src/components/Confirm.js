@@ -110,7 +110,7 @@ export default class Confirm extends Component {
               Go Back
             </Button>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <Button variant="success" onClick={this.continue}>
+            <Button variant="success" onClick={this.handleSubmit}>
               Apply
             </Button>
           </Card.Footer>
