@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import MyTable from "./common/MyTable";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 class PermissionsTable extends Component {
   columns = [
@@ -28,12 +30,22 @@ class PermissionsTable extends Component {
     {
       key: "Delete",
       content: (permission) => (
-        <button
-          onClick={() => this.props.onDelete(permission)}
-          className="btn btn-danger btn-sm"
-        >
-          Remove
-        </button>
+        <div>
+          <FontAwesomeIcon
+            style={{ cursor: "pointer" }}
+            className="text-danger"
+            icon={faTrash}
+            title="trash"
+            onClick={() => this.props.onDelete(permission)}
+          ></FontAwesomeIcon>
+          <br />
+          <br />
+          {permission.status === "accepted" ? (
+            <span className="text-success text-center" title="accepted">
+              <FontAwesomeIcon icon={faCheckCircle}></FontAwesomeIcon>
+            </span>
+          ) : null}
+        </div>
       ),
     },
   ];

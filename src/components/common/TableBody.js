@@ -4,6 +4,12 @@ import _ from "lodash";
 class TableBody extends Component {
   renderCell = (item, column) => {
     if (column.content) return column.content(item);
+    if (column.path === "instant") {
+      let date = _.get(item, column.path);
+      date = new Date(date * 1000).toString();
+      let idx = date.indexOf("GMT");
+      return date.substring(0, idx);
+    }
     return _.get(item, column.path);
   };
 

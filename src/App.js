@@ -14,6 +14,9 @@ import {
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Details from "./components/Details";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Status from "./components/Status";
 
 class App extends Component {
   state = {};
@@ -38,11 +41,32 @@ class App extends Component {
     }
   }
 
+  handleChange = () => {
+    try {
+      const uid = localStorage.getItem("uid");
+      const expiresAt = localStorage.getItem("expiresAt");
+      const refreshToken = localStorage.getItem("refreshToken");
+      const authToken = localStorage.getItem("authToken");
+      if (uid && expiresAt && refreshToken && authToken) {
+        const user = {
+          uid,
+          expiresAt,
+          authToken,
+          refreshToken,
+        };
+        this.setState({ user });
+      }
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
   render() {
     const marginTop = { marginTop: "30px" };
     return (
       <Router>
         <NavigationBar user={this.state.user} />
+        <ToastContainer />
         <Container>
           <Row>
             <Col lg={12} style={marginTop}>
@@ -51,7 +75,11 @@ class App extends Component {
                   path="/"
                   exact
                   render={(props) => (
-                    <Welcome {...props} user={this.state.user} />
+                    <Welcome
+                      {...props}
+                      user={this.state.user}
+                      handleChange={this.handleChange}
+                    />
                   )}
                 />
                 <Route
@@ -64,6 +92,7 @@ class App extends Component {
                 />
 
                 <Route path="/add" exact component={Permission} />
+                <Route path="/status" exact component={Status} />
                 <Route
                   path="/login"
                   exact

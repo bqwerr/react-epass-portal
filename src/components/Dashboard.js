@@ -7,6 +7,7 @@ import { paginate } from "../services/PaginateService";
 import _ from "lodash";
 import axios from "axios";
 import SearchBox from "./SearchBox";
+import { toast } from "react-toastify";
 
 export default class Dashboard extends Component {
   state = {
@@ -40,7 +41,7 @@ export default class Dashboard extends Component {
           }
         })
         .catch((error) => {
-          console.log(error);
+          toast.error("Your Session was Expired.");
         });
     } else {
       const types = [{ _id: "", name: "All Permissions" }, ...getTypes()];
@@ -103,7 +104,9 @@ export default class Dashboard extends Component {
     const { totalCount, data: permissions } = this.getPagedData();
 
     if (count === 0)
-      return <p className="text-white">Loading Permissions from database...</p>;
+      return (
+        <p className="text-secondary">Loading Permissions from database...</p>
+      );
 
     return (
       <div className="row">

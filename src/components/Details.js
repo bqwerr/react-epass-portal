@@ -1,10 +1,33 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const Details = (props) => {
-  const markSafe = () => {};
-  const markUnSafe = () => {};
-  const permission = props.location.state.permission;
+  const markSafeOrUnsafe = (id, val) => {
+    var data = "";
+    const authToken = localStorage.getItem("authToken");
+    var config = {
+      method: "put",
+      url: "http://localhost:8080/api/permission/update/" + id + "/" + val,
+      headers: {
+        Authorization: "Bearer " + authToken,
+      },
+      data: data,
+    };
+    axios(config)
+      .then((response) => {
+        if (response.data != null) {
+          toast.success("Status Updated for this Permission");
+        }
+      })
+      .catch((error) => {
+        toast.error("An unexpected error Occured");
+      });
+  };
+
+  const { permission } = props.location.state ? props.location.state : null;
+  if (!permission) return null;
   return (
     <div>
       <Card className={"border border-dark bg-dark text-white"}>
@@ -75,11 +98,21 @@ const Details = (props) => {
           </div>
         </Card.Body>
         <Card.Footer style={{ textAlign: "right" }}>
-          <Button variant="danger" onClick={markUnSafe}>
+          <Button
+            variant="danger"
+            onClick={() =>
+              markSafeOrUnsafe(permission.permission_id, "rejected")
+            }
+          >
             Mark as Unsafe Travel (Reject)
           </Button>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <Button variant="success" onClick={markSafe}>
+          <Button
+            variant="success"
+            onClick={() =>
+              markSafeOrUnsafe(permission.permission_id, "accepted")
+            }
+          >
             Accept
           </Button>
         </Card.Footer>

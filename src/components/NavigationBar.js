@@ -17,18 +17,21 @@ export default class NavigationBar extends Component {
           />
         </Link>
         <Nav className="mr-auto">
-          <Link to={""} className="nav-link">
+          <Link to={"/"} className="nav-link">
             Home
           </Link>
           {!user ? (
-            <Link to={"add"} className="nav-link">
+            <Link to={"/add"} className="nav-link">
               Apply
             </Link>
           ) : (
-            <Link to={"dashboard"} className="nav-link">
+            <Link to={"/dashboard"} className="nav-link">
               Dashboard
             </Link>
           )}
+          <Link to={"/status"} className="nav-link">
+            Status
+          </Link>
         </Nav>
       </Navbar>
     );

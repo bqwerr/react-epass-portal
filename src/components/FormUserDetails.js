@@ -36,7 +36,7 @@ export default class FormUserDetails extends Component {
                   </Form.Text>
                   {errors["fullname"] && (
                     <div className="text-danger">
-                      <strong>{errors["fullname"]}</strong>
+                      <p className="text-danger">{errors["fullname"]}</p>
                     </div>
                   )}
                 </Form.Group>
@@ -53,7 +53,7 @@ export default class FormUserDetails extends Component {
                   />
                   {errors["document_ref"] && (
                     <div className="text-danger">
-                      <strong>{errors["document_ref"]}</strong>
+                      <p className="text-danger">{errors["document_ref"]}</p>
                     </div>
                   )}
                 </Form.Group>
@@ -72,7 +72,7 @@ export default class FormUserDetails extends Component {
                   />
                   {errors["phone"] && (
                     <div className="text-danger">
-                      <strong>{errors["phone"]}</strong>
+                      <p className="text-danger">{errors["phone"]}</p>
                     </div>
                   )}
                 </Form.Group>
@@ -92,7 +92,7 @@ export default class FormUserDetails extends Component {
                   </Form.Text>
                   {errors["email"] && (
                     <div className="text-danger">
-                      <strong>{errors["email"]}</strong>
+                      <p className="text-danger">{errors["email"]}</p>
                     </div>
                   )}
                 </Form.Group>

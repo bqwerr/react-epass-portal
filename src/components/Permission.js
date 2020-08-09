@@ -4,6 +4,7 @@ import FormTravelDetails from "./FormTravelDetails";
 import Confirm from "./Confirm";
 import Joi from "joi-browser";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export class Permission extends Component {
   state = {
@@ -55,14 +56,14 @@ export class Permission extends Component {
   };
 
   schema = {
-    document_ref: Joi.string().required().label("Proof Ref"),
+    document_ref: Joi.string().required().min(6).label("Proof Ref"),
     fullname: Joi.string().required().label("Full Name"),
     document_type: Joi.string().required().label("Document Type"),
     reason: Joi.string().required().label("Reason"),
     travellers: Joi.string().required().label("Travellers"),
     permission_name: Joi.string().required().label("Permission Type"),
-    phone: Joi.string().required().label("Phone"),
-    email: Joi.string().required().label("Email"),
+    phone: Joi.string().required().min(10).max(10).label("Phone"),
+    email: Joi.string().required().email().label("Email"),
     src_state: Joi.string().required().label("State"),
     dest_state: Joi.string().required().label("Destination State"),
     src_district: Joi.string().required().label("District"),
@@ -198,11 +199,16 @@ export class Permission extends Component {
     axios(config)
       .then((response) => {
         if (response.status === 200) {
-          console.log(response);
+          this.props.history.replace("/");
+          toast.success(
+            "Successfully Submitted. Check status to download E-pass"
+          );
+        } else {
+          toast.error("An unexpected error Occurred");
         }
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("Please Check your Internet Connection");
       });
   };
 

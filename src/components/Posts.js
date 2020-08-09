@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { Button, Card, Form } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 class Posts extends Component {
   state = {
@@ -25,7 +24,7 @@ class Posts extends Component {
         }
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("An unexpected error Occurred");
       });
   }
 
@@ -49,40 +48,62 @@ class Posts extends Component {
       axios(config)
         .then((response) => {
           if (response.data != null) {
-            console.log(response);
+            const posts = [...this.state.posts, data];
+
+            this.componentDidMount();
+            toast.success("Successfully created a new Post");
           }
         })
         .catch((error) => {
-          console.log(error);
+          toast.error("An unexpected error Occurred.");
         });
       this.title.value = "";
       this.description.value = "";
     }
   };
 
-  //   handleDelete = async (post) => {
-  //     const originalPosts = this.state.posts;
+  handleDelete = (post) => {
+    const { user } = this.props;
+    if (user && user.authToken) {
+      const originalPosts = this.state.posts;
 
-  //     const posts = this.state.posts.filter((p) => p.id !== post.id);
-  //     this.setState({ posts });
+      const posts = this.state.posts.filter((p) => p.id !== post.id);
+      this.setState({ posts });
 
-  //     try {
-  //       await axios.delete("" + "/" + post.id);
-  //     } catch (ex) {
-  //       if (ex.response && ex.response.status === 404)
-  //         alert("This post has already been deleted.");
-  //       this.setState({ posts: originalPosts });
-  //     }
-  //   };
+      const data = {
+        id: post.id,
+      };
+      console.log(data);
+      const authToken = user.authToken;
+      var config = {
+        method: "post",
+        url: "http://localhost:8080/api/posts/delete",
+        headers: {
+          Authorization: "Bearer " + authToken,
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then((response) => {
+          if (response.status === 200) {
+            toast.success("Successfully Deleted");
+          }
+        })
+        .catch((error) => {
+          toast.error("An unexpected error Occurred.");
+          this.setState({ posts: originalPosts });
+        });
+    }
+  };
 
   render() {
     const { posts } = this.state;
     const { user } = this.props;
-
+    if (posts.length === 0 && !user)
+      return <p className="text-secondary">Loading Posts from database..</p>;
     return (
       <React.Fragment>
-        <ToastContainer />
-
         <br />
         {!user ? (
           <h4 className="text-primary text-center">Latest Announcements</h4>
@@ -98,7 +119,7 @@ class Posts extends Component {
                 .reverse()
                 .slice(0, 4)
                 .map((post) => (
-                  <tr key={post.id}>
+                  <tr key={post.id + "@" + post.title}>
                     <td className="bg-dark text-white">
                       <strong>
                         {" "}
@@ -109,7 +130,11 @@ class Posts extends Component {
                       {user && (
                         <div className="float-right">
                           &nbsp;&nbsp;&nbsp;&nbsp;
-                          <Button variant="danger" className="btn-sm">
+                          <Button
+                            variant="danger"
+                            onClick={() => this.handleDelete(post)}
+                            className="btn-sm"
+                          >
                             Delete
                           </Button>
                         </div>

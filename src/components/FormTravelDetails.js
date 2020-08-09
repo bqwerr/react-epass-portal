@@ -38,7 +38,7 @@ export default class FormTravelDetails extends Component {
                 />
                 {errors["src_state"] && (
                   <div className="text-danger">
-                    <strong>{errors["src_state"]}</strong>
+                    <p className="text-danger">{errors["src_state"]}</p>
                   </div>
                 )}
               </div>
@@ -51,7 +51,7 @@ export default class FormTravelDetails extends Component {
                 />
                 {errors["src_district"] && (
                   <div className="text-danger">
-                    <strong>{errors["src_district"]}</strong>
+                    <p className="text-danger">{errors["src_district"]}</p>
                   </div>
                 )}
               </div>
@@ -64,7 +64,7 @@ export default class FormTravelDetails extends Component {
                 />
                 {errors["src_area"] && (
                   <div className="text-danger">
-                    <strong>{errors["src_area"]}</strong>
+                    <p className="text-danger">{errors["src_area"]}</p>
                   </div>
                 )}
               </div>
@@ -77,7 +77,7 @@ export default class FormTravelDetails extends Component {
                 />
                 {errors["src_zip"] && (
                   <div className="text-danger">
-                    <strong>{errors["src_zip"]}</strong>
+                    <p className="text-danger">{errors["src_zip"]}</p>
                   </div>
                 )}
               </div>
@@ -95,7 +95,7 @@ export default class FormTravelDetails extends Component {
                 />
                 {errors["src_landmark"] && (
                   <div className="text-danger">
-                    <strong>{errors["src_landmark"]}</strong>
+                    <p className="text-danger">{errors["src_landmark"]}</p>
                   </div>
                 )}
               </div>
@@ -114,7 +114,7 @@ export default class FormTravelDetails extends Component {
                 />
                 {errors["dest_state"] && (
                   <div className="text-danger">
-                    <strong>{errors["dest_state"]}</strong>
+                    <p className="text-danger">{errors["dest_state"]}</p>
                   </div>
                 )}
               </div>
@@ -127,7 +127,7 @@ export default class FormTravelDetails extends Component {
                 />
                 {errors["dest_district"] && (
                   <div className="text-danger">
-                    <strong>{errors["dest_district"]}</strong>
+                    <p className="text-danger">{errors["dest_district"]}</p>
                   </div>
                 )}
               </div>
@@ -140,7 +140,7 @@ export default class FormTravelDetails extends Component {
                 />
                 {errors["dest_area"] && (
                   <div className="text-danger">
-                    <strong>{errors["dest_area"]}</strong>
+                    <p className="text-danger">{errors["dest_area"]}</p>
                   </div>
                 )}
               </div>
@@ -153,7 +153,7 @@ export default class FormTravelDetails extends Component {
                 />
                 {errors["dest_zip"] && (
                   <div className="text-danger">
-                    <strong>{errors["dest_zip"]}</strong>
+                    <p className="text-danger">{errors["dest_zip"]}</p>
                   </div>
                 )}
               </div>
@@ -171,7 +171,7 @@ export default class FormTravelDetails extends Component {
                 />
                 {errors["dest_landmark"] && (
                   <div className="text-danger">
-                    <strong>{errors["dest_landmark"]}</strong>
+                    <p className="text-danger">{errors["dest_landmark"]}</p>
                   </div>
                 )}
               </div>
@@ -189,7 +189,7 @@ export default class FormTravelDetails extends Component {
                 />
                 {errors["description"] && (
                   <div className="text-danger">
-                    <strong>{errors["description"]}</strong>
+                    <p className="text-danger">{errors["description"]}</p>
                   </div>
                 )}
               </div>

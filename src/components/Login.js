@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt, faUndo } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 class Login extends Component {
   initialValues = {
@@ -31,10 +32,11 @@ class Login extends Component {
           onSubmitProps.setSubmitting(false);
           onSubmitProps.resetForm();
           window.location = "/";
+          toast.success("Login Successful");
         }
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("Invalid Credentials");
         onSubmitProps.setSubmitting(false);
         onSubmitProps.resetForm();
       });
