@@ -63,7 +63,7 @@
 
 [![Screenshots](images/gif.gif)](http://epass-portal.herokuapp.com/)
 
-This repository has frontend components built using <a href="https://reactjs.org/">ReactJS</a>. The main objective of this application is to create a user friendly dashboard for the travel admins, to view the applications raised by the users. This application consumes the backend API <a href="https://github.com/bqwerr/react-epass-service">Travel Management Service</a> to accept, reject and manage travel permissions.
+This repository has frontend components built using <a href="https://reactjs.org/">ReactJS</a>. The main objective of this application is to create a user friendly dashboard for the travel admins, to view the applications raised by the users. This application consumes the backend API <a href="https://github.com/bqwerr/spring-epass-service">Travel Management Service</a> to accept, reject and manage travel permissions.
 
 <br />
 
@@ -71,7 +71,7 @@ This repository has frontend components built using <a href="https://reactjs.org
 
 ### Built With
 
-[![My Skills](https://skillicons.dev/icons?i=react,nodejs,bootstrap,heroku&perline=3)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react,nodejs,bootstrap,heroku&perline=4)](https://skillicons.dev)
 
 
 <br />
@@ -95,7 +95,7 @@ To get a local copy of thsi frontend application up and running follow these exa
 3. Now run the command ```npm start```.
 4. Open http://localhost:3000 to view the application running in the browser.
 
-- To get the backend API for this application, please refer this <a href="https://github.com/bqwerr/react-epass-service">repository</a>
+- To get the backend API for this application, please refer this <a href="https://github.com/bqwerr/spring-epass-service">repository</a>
 
 <br />
 
