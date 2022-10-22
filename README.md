@@ -1,68 +1,168 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<a name="readme-top"></a>
 
-In the project directory, you can run:
 
-### `npm start`
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a>
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br />
+<h1 align="center">Travel-Permissions Management Portal</h1>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  
+  
 
-### `npm test`
+  <p align="center">
+    Frontend Application built using ReactJS to accept, reject and manage travel permissions raised by the appication users.
+    <br />
+    <br/>
+    <a href="http://epass-portal.herokuapp.com/">View Demo</a>
+    <!-- · <a href="https://bqwerr.github.io">Explore the docs</a> -->
+    ·
+    <a href="https://github.com/bqwerr">View More »</a>
+  </p>
+</div>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br />
 
-### `npm run build`
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <!-- <li><a href="#contributing">Contributing</a></li> -->
+    <!-- <li><a href="#license">License</a></li> -->
+    <li><a href="#contact">Contact</a></li>
+    <!-- <li><a href="#acknowledgments">Acknowledgments</a></li> -->
+  </ol>
+</details>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<br />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- ABOUT THE PROJECT -->
+## About The Project
+<br />
 
-### `npm run eject`
+[![Screenshots](images/gif.gif)](http://epass-portal.herokuapp.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This repository has frontend components built using <a href="https://reactjs.org/">ReactJS</a>. The main objective of this application is to create a user friendly dashboard for the travel admins, to view the applications raised by the users. This application consumes the backend API <a href="https://github.com/bqwerr/react-epass-service">Travel Management Service</a> to accept, reject and manage travel permissions.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br />
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### Built With
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[![My Skills](https://skillicons.dev/icons?i=react,nodejs,bootstrap,heroku&perline=3)](https://skillicons.dev)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+<br />
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+<!-- GETTING STARTED -->
+## Getting Started
 
-### Analyzing the Bundle Size
+To get a local copy of thsi frontend application up and running follow these example steps.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Prerequisites
 
-### Making a Progressive Web App
+* NodeJS has to be installed in the local system.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### Installation
 
-### Advanced Configuration
+1. Clone the repo
+   ```sh
+   git clone https://github.com/bqwerr/react-epass-portal.git
+   ```
+2. Open a terminal inside the folder ```react-epass-portal``` and run command ```npm install```.
+3. Now run the command ```npm start```.
+4. Open http://localhost:3000 to view the application running in the browser.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- To get the backend API for this application, please refer this <a href="https://github.com/bqwerr/react-epass-service">repository</a>
 
-### Deployment
+<br />
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<!-- USAGE EXAMPLES -->
+## Usage
+
+_For usage of endpoints, please refer to the [Documentation](https://htmlpreview.github.io/?https://github.com/bqwerr/spring-epass-service/blob/master/documentation.htm)_
+
+- Create a user using the ```/api/auth/signup``` endpoint from the above documentation.
+- Then you may be able to use the credentials to login to the site
+
+<br />
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] Create Java Backend API endpoints for Authentication & Authorization, Managing User Permissions & Admin Posts.
+- [x] Secure API endpoints using JWT Authentication
+    - [x] Refresh Token functionality was enabled to extend user session
+- [x] Create API Docuementation
+- [x] Create a frontend dashboard & consume the API
+- [ ] ResponseEntity Manipulations with Response Status
+<br />
+
+<!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
+
+
+
+
+<!-- CONTRIBUTING -->
+<!-- ## Contributing
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+<br /> -->
+
+
+
+<!-- CONTACT -->
+
+## Contact
+
+[GMail][gmail] \
+[LinkedIn][linkedin] \
+[GitHub][github] \
+[Website][website] 
+
+
+
+
+<!-- ACKNOWLEDGMENTS / REFERENCES -->
+<!-- ## References
+* []()
+* []()
+* []() -->
+
+
+[website]: https://bqwerr.github.io
+[linkedin]: https://linkedin.com/in/srujan-tumma
+[gmail]: mailto:tummasrujan@gmail.com
+[github]: https://github.com/bqwerr
