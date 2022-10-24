@@ -19,7 +19,8 @@
     Frontend Application built using ReactJS to accept, reject and manage travel permissions raised by the appication users.
     <br />
     <br/>
-    <a href="http://epass-portal.herokuapp.com/">View Demo</a>
+    <a href="http://epass-portal.herokuapp.com/">View Demo</a> · 
+    <a href="https://github.com/bqwerr/react-epass-portal">Repository</a>
     <!-- · <a href="https://bqwerr.github.io">Explore the docs</a> -->
     ·
     <a href="https://github.com/bqwerr">View More »</a>
@@ -147,10 +148,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## Contact
 
-[GMail][gmail] \
-[LinkedIn][linkedin] \
-[GitHub][github] \
-[Website][website] 
+[GMail][gmail] · [LinkedIn][linkedin] · [GitHub][github] · [Website][website] 
 
 
 
