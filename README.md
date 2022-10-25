@@ -80,7 +80,7 @@ This repository has frontend components built using <a href="https://reactjs.org
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy of thsi frontend application up and running follow these example steps.
+To get a local copy of this frontend application up and running follow these example steps.
 
 ### Prerequisites
 
